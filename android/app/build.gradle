@@ -1,6 +1,7 @@
+
 plugins {
     id "com.android.application"
-    id "kotlin-android"
+    id "org.jetbrains.kotlin.android" // ✅ explicitly set Kotlin version
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
 }
@@ -24,18 +25,30 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace = "com.example.tic_tac_toe"
+    namespace = "com.abhi.tictactoe.tic_tac_toe"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+    
+    kotlinOptions {
+    jvmTarget = "21"          // match your Java SE‑21
+    languageVersion = "2.3"   // align with Kotlin ≥ 2.0.20
+    apiVersion = "2.3"        // optional, keeps compiler consistent
+}
+
+   java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(21)
+        }
     }
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.tic_tac_toe"
+        applicationId "com.abhi.tictactoe.tic_tac_toe"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdk = flutter.minSdkVersion

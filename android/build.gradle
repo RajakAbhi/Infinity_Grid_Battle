@@ -1,3 +1,22 @@
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // Android Gradle Plugin
+        classpath "com.android.tools.build:gradle:8.11.1"
+        // Kotlin Gradle Plugin (latest stable)
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.3.20"
+    }
+}
+// then plugins (if needed)
+plugins {
+    // usually you don’t need plugins here in project-level build.gradle
+    // keep them only in app/build.gradle
+}
+
 allprojects {
     repositories {
         google()
@@ -16,3 +35,4 @@ subprojects {
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
+
